@@ -1,13 +1,14 @@
-import 'dart:ffi';
-
 import 'package:e_commerce_flutter/constans/assets_images.dart';
+import 'package:e_commerce_flutter/constans/routes.dart';
+import 'package:e_commerce_flutter/screens/auth_ui/login/login.dart';
+import 'package:e_commerce_flutter/screens/auth_ui/sign_up/sign_up.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
 import 'package:e_commerce_flutter/widgets/top_titles/top_titles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Welcome extends StatelessWidget {
+  const Welcome({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +56,18 @@ class Login extends StatelessWidget {
             ),
             PrimaryButton(
               title: "Login",
-              onPressed: () {},
+              onPressed: () {
+                Routes.instance.push(widget: const Login(), context: context);
+              },
             ),
             SizedBox(
               height: 18.0,
             ),
             PrimaryButton(
               title: "Sign Up",
-              onPressed: () {},
+              onPressed: () {
+                Routes.instance.push(widget: const SignUp(), context: context);
+              },
             )
           ],
         ),
