@@ -1,4 +1,4 @@
-import 'package:e_commerce_flutter/constans/routes.dart';
+import 'package:e_commerce_flutter/constants/routes.dart';
 import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
 import 'package:e_commerce_flutter/widgets/top_titles/top_titles.dart';

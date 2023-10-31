@@ -1,11 +1,15 @@
-import 'package:e_commerce_flutter/constans/theme.dart';
+import 'package:e_commerce_flutter/constants/theme.dart';
+import 'package:e_commerce_flutter/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
+import 'package:e_commerce_flutter/firebase_options.dart';
+
+import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'screens/welcome/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MainApp());
 }
 
@@ -15,10 +19,17 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'E-Commerce',
-      theme: themeData,
-      debugShowCheckedModeBanner: false,
-      home: Welcome(),
-    );
+        title: 'E-Commerce',
+        theme: themeData,
+        debugShowCheckedModeBanner: false,
+        home: StreamBuilder(
+          stream: FirebaseAuthHelper.instance.getAuthChange,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return const Home();
+            }
+            return const Welcome();
+          },
+        ));
   }
 }

@@ -1,5 +1,5 @@
-import 'package:e_commerce_flutter/constans/assets_images.dart';
-import 'package:e_commerce_flutter/constans/routes.dart';
+import 'package:e_commerce_flutter/constants/assets_images.dart';
+import 'package:e_commerce_flutter/constants/routes.dart';
 import 'package:e_commerce_flutter/screens/auth_ui/login/login.dart';
 import 'package:e_commerce_flutter/screens/auth_ui/sign_up/sign_up.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
