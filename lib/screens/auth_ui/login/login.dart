@@ -7,7 +7,6 @@ import 'package:e_commerce_flutter/screens/auth_ui/sign_up/sign_up.dart';
 import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
 import 'package:e_commerce_flutter/widgets/top_titles/top_titles.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

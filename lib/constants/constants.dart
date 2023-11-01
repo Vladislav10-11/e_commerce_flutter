@@ -88,3 +88,19 @@ bool loginValidation(String email, String password) {
     return true;
   }
 }
+
+bool signUpValidation(
+    String email, String password, String name, String phone) {
+  if (password.isEmpty && email.isEmpty && name.isEmpty && phone.isEmpty) {
+    showMessage("Both fields are Empty");
+    return false;
+  } else if (email.isEmpty) {
+    showMessage("Email is Empty");
+    return false;
+  } else if (password.isEmpty) {
+    showMessage("Password is Empty");
+    return false;
+  } else {
+    return true;
+  }
+}
