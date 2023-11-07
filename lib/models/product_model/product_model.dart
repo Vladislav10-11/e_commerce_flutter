@@ -19,17 +19,17 @@ class ProductModel {
   String id;
   bool isFavourite;
   String name;
-  String price;
+  double price;
   String description;
   String status;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
-        id: json["id"],
+        id: "1",
         name: json["name"],
         description: json["description"],
         image: json["image"],
         isFavourite: false,
-        price: json["price"],
+        price: double.parse(json["price"].toString()),
         status: json["status"],
       );
   Map<String, dynamic> toJson() => {
