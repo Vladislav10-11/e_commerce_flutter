@@ -18,12 +18,22 @@ class SingleCartItem extends StatefulWidget {
 
 class _SingleCartItemState extends State<SingleCartItem> {
   int qty = 0;
+  @override
+  void initState() {
+    qty = widget.singleProduct.qty ?? 1;
+    setState(() {});
+    super.initState();
+  }
+
   late Color _rippleColor = getRandomColor();
 
   Color getRandomColor() =>
       Color((Random().nextDouble() * 0xffffff).toInt()).withOpacity(1.0);
   @override
   Widget build(BuildContext context) {
+    AppProvider appProvider = Provider.of<AppProvider>(
+      context,
+    );
     return Container(
       margin: EdgeInsets.only(bottom: 12),
       child: Row(
@@ -102,9 +112,21 @@ class _SingleCartItemState extends State<SingleCartItem> {
                           Row(
                             children: [
                               CupertinoButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (appProvider.getFavoriteProductList
+                                      .contains(widget.singleProduct)) {
+                                    appProvider.addFavoriteProduct(
+                                        widget.singleProduct);
+                                  } else {
+                                    appProvider.removeFavoriteProduct(
+                                        widget.singleProduct);
+                                  }
+                                },
                                 child: Text(
-                                  "Add to wishList",
+                                  appProvider.getFavoriteProductList
+                                          .contains(widget.singleProduct)
+                                      ? "Remove to wishList"
+                                      : "Add to wishList",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 12),
