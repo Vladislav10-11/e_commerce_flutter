@@ -13,4 +13,6 @@ class AppProvider with ChangeNotifier {
     _cartProductList.remove(productModel);
     notifyListeners();
   }
+
+  List<ProductModel> get getCartProductList => _cartProductList;
 }
