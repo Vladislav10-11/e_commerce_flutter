@@ -17,6 +17,7 @@ ThemeData themeData = ThemeData(
   ),
   primarySwatch: Colors.red,
   appBarTheme: AppBarTheme(
+    toolbarTextStyle: TextStyle(color: Colors.black),
     backgroundColor: Colors.white,
     elevation: 0.0,
     iconTheme: IconThemeData(color: Colors.black),

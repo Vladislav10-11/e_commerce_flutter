@@ -1,6 +1,11 @@
+import 'package:e_commerce_flutter/constants/constants.dart';
+import 'package:e_commerce_flutter/constants/routes.dart';
 import 'package:e_commerce_flutter/models/product_model/product_model.dart';
+import 'package:e_commerce_flutter/provider/app_provider.dart';
+import 'package:e_commerce_flutter/screens/cart_screen/cart_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
   final ProductModel singleProduct;
@@ -20,7 +25,11 @@ class _ProductDetailsState extends State<ProductDetails> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart))
+          IconButton(
+              onPressed: () {
+                Routes.instance.push(widget: CartScreen(), context: context);
+              },
+              icon: Icon(Icons.shopping_cart))
         ],
       ),
       body: Padding(
@@ -99,7 +108,14 @@ class _ProductDetailsState extends State<ProductDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                OutlinedButton(onPressed: () {}, child: Text("Add To Card")),
+                OutlinedButton(
+                    onPressed: () {
+                      AppProvider appProvider =
+                          Provider.of<AppProvider>(context, listen: false);
+                      appProvider.addCartProduct(widget.singleProduct);
+                      showMessage("Added to cart");
+                    },
+                    child: Text("Add To Card")),
                 SizedBox(
                   width: 12.0,
                 ),
