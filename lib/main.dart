@@ -2,6 +2,7 @@ import 'package:e_commerce_flutter/constants/theme.dart';
 import 'package:e_commerce_flutter/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 import 'package:e_commerce_flutter/firebase_options.dart';
 import 'package:e_commerce_flutter/provider/app_provider.dart';
+import 'package:e_commerce_flutter/screens/custom_bottom/custom_border.dart';
 
 import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class MainApp extends StatelessWidget {
             stream: FirebaseAuthHelper.instance.getAuthChange,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return const Home();
+                return const CustomBottom();
               }
               return const Welcome();
             },
