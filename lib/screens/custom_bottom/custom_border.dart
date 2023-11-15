@@ -1,3 +1,4 @@
+import 'package:e_commerce_flutter/screens/account_screen/account_screen.dart';
 import 'package:e_commerce_flutter/screens/cart_screen/cart_screen.dart';
 import 'package:e_commerce_flutter/screens/favorite_screen/favorite_screen.dart';
 import 'package:e_commerce_flutter/screens/home/home.dart';
@@ -26,11 +27,8 @@ class _CustomBottomState extends State<CustomBottom> {
     _hideNavBar = false;
   }
 
-  List<Widget> _buildScreens() => [
-        Home(),
-        CartScreen(),
-        FavoriteScreen(),
-      ];
+  List<Widget> _buildScreens() =>
+      [Home(), CartScreen(), FavoriteScreen(), AccountScreen()];
 
   List<PersistentBottomNavBarItem> _navBarsItems() => [
         PersistentBottomNavBarItem(
@@ -51,6 +49,13 @@ class _CustomBottomState extends State<CustomBottom> {
           inactiveIcon: Icon(Icons.favorite_border),
           icon: const Icon(Icons.favorite),
           title: "Favorite",
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: Colors.white,
+        ),
+        PersistentBottomNavBarItem(
+          inactiveIcon: Icon(Icons.person_outline),
+          icon: const Icon(Icons.person),
+          title: "Account",
           activeColorPrimary: Colors.white,
           inactiveColorPrimary: Colors.white,
         ),

@@ -3,6 +3,7 @@
 import 'package:e_commerce_flutter/constants/constants.dart';
 import 'package:e_commerce_flutter/constants/routes.dart';
 import 'package:e_commerce_flutter/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
+import 'package:e_commerce_flutter/screens/custom_bottom/custom_border.dart';
 import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
 import 'package:e_commerce_flutter/widgets/top_titles/top_titles.dart';
@@ -85,8 +86,8 @@ class _SignUpState extends State<SignUp> {
                     bool isValidated = signUpValidation(
                         email.text, password.text, name.text, phone.text);
                     if (isValidated) {
-                      bool isLogined = await FirebaseAuthHelper.instance
-                          .signUp(email.text, password.text, context);
+                      bool isLogined = await FirebaseAuthHelper.instance.signUp(
+                          name.text, email.text, password.text, context);
                       if (isLogined) {
                         Routes.instance.pushAndRemoveUntill(
                             widget: Home(), context: context);
@@ -107,11 +108,11 @@ class _SignUpState extends State<SignUp> {
                     bool isValidated = signUpValidation(
                         email.text, password.text, name.text, phone.text);
                     if (isValidated) {
-                      bool isLogined = await FirebaseAuthHelper.instance
-                          .signUp(email.text, password.text, context);
+                      bool isLogined = await FirebaseAuthHelper.instance.signUp(
+                          name.text, email.text, password.text, context);
                       if (isLogined) {
                         Routes.instance.pushAndRemoveUntill(
-                            widget: Home(), context: context);
+                            widget: CustomBottom(), context: context);
                       }
                     }
                   },

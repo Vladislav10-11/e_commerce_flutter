@@ -4,6 +4,7 @@ import 'package:e_commerce_flutter/constants/constants.dart';
 import 'package:e_commerce_flutter/constants/routes.dart';
 import 'package:e_commerce_flutter/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 import 'package:e_commerce_flutter/screens/auth_ui/sign_up/sign_up.dart';
+import 'package:e_commerce_flutter/screens/custom_bottom/custom_border.dart';
 import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
 import 'package:e_commerce_flutter/widgets/top_titles/top_titles.dart';
@@ -74,7 +75,7 @@ class _LoginState extends State<Login> {
                           .login(email.text, password.text, context);
                       if (isLogined) {
                         Routes.instance.pushAndRemoveUntill(
-                            widget: Home(), context: context);
+                            widget: CustomBottom(), context: context);
                       }
                     }
                   },

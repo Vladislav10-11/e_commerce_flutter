@@ -2,11 +2,13 @@ import 'package:e_commerce_flutter/constants/routes.dart';
 import 'package:e_commerce_flutter/firebase_helper/firebase_firestore_helper/firebase_firestore.dart';
 import 'package:e_commerce_flutter/models/category_model/category_model.dart';
 import 'package:e_commerce_flutter/models/product_model/product_model.dart';
+import 'package:e_commerce_flutter/provider/app_provider.dart';
 import 'package:e_commerce_flutter/screens/category_views/category_views.dart';
 import 'package:e_commerce_flutter/screens/product_details/product_details.dart';
 import 'package:e_commerce_flutter/widgets/top_titles/top_titles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -22,6 +24,8 @@ class _HomeState extends State<Home> {
   bool isLoading = true;
   @override
   void initState() {
+    AppProvider appProvider = Provider.of<AppProvider>(context, listen: false);
+    appProvider.getUserInfoFirebase();
     getCategoriesList();
     super.initState();
   }
@@ -37,6 +41,8 @@ class _HomeState extends State<Home> {
     setState(() {
       isLoading = false;
     });
+
+    void initState() {}
   }
 
   Widget build(BuildContext context) {
