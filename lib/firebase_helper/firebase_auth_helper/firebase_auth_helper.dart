@@ -45,4 +45,23 @@ class FirebaseAuthHelper {
   void signOut() async {
     await _auth.signOut();
   }
+
+  Future<bool> changePassword(String password, BuildContext context) async {
+    try {
+      showLoaderDialog(context);
+      // UserCredential userCredential = await _auth
+      //     .createUserWithEmailAndPassword(email: email, password: password);
+      // UserModel userModel = UserModel(
+      //     image: null, id: userCredential.user!.uid, name: name, email: email);
+      // _firestore.collection("users").doc(userModel.id).set(userModel.toJson());
+      Navigator.of(context).pop();
+      showMessage("Password Change");
+      Navigator.of(context).pop();
+      return true;
+    } on FirebaseAuthException catch (e) {
+      Navigator.of(context).pop();
+      showMessage(e.code.toString());
+      return false;
+    }
+  }
 }

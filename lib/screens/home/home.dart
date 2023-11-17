@@ -182,7 +182,7 @@ class _HomeState extends State<Home> {
                                         height: 30.0,
                                       ),
                                       SizedBox(
-                                        height: 45,
+                                        height: 35,
                                         width: 150,
                                         child: OutlinedButton(
                                           onPressed: () {

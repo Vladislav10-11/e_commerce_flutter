@@ -1,10 +1,10 @@
 import 'package:e_commerce_flutter/constants/routes.dart';
 import 'package:e_commerce_flutter/firebase_helper/firebase_auth_helper/firebase_auth_helper.dart';
 import 'package:e_commerce_flutter/provider/app_provider.dart';
+import 'package:e_commerce_flutter/screens/change_password/change_password.dart';
 import 'package:e_commerce_flutter/screens/edit_profile/edit_profile.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,7 +40,11 @@ class _AccountScreenState extends State<AccountScreen> {
                           Icons.person_outline,
                           size: 150,
                         )
-                      : Image.network(appProvider.getUserInformation.image!),
+                      : CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              appProvider.getUserInformation.image!),
+                          radius: 70,
+                        ),
                   Text(
                     appProvider.getUserInformation.name,
                     style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
@@ -53,6 +57,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     height: 12.0,
                   ),
                   SizedBox(
+                    height: 35,
                     width: 130,
                     child: PrimaryButton(
                       title: "Edit Profile",
@@ -75,6 +80,14 @@ class _AccountScreenState extends State<AccountScreen> {
                     onTap: () {},
                     leading: Icon(Icons.shopping_bag),
                     title: Text("Your Order"),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      Routes.instance
+                          .push(widget: ChangePassword(), context: context);
+                    },
+                    leading: Icon(Icons.change_circle_outlined),
+                    title: Text("Change Password"),
                   ),
                   ListTile(
                     onTap: () {},

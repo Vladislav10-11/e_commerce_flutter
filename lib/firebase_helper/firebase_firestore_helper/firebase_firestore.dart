@@ -63,9 +63,11 @@ class FirebaseFireStoreHelper {
     DocumentSnapshot<Map<String, dynamic>> querySnapshot =
         await _firebaseFireStore
             .collection("users")
-            .doc(FirebaseAuth.instance.currentUser!.uid)
+            .doc(FirebaseAuth.instance.currentUser?.uid)
             .get();
 
-    return UserModel.fromJson(querySnapshot.data()!);
+    return querySnapshot.data() != null
+        ? UserModel.fromJson(querySnapshot.data()!)
+        : UserModel(id: '', name: '', email: '');
   }
 }
