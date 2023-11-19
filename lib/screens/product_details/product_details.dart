@@ -4,6 +4,7 @@ import 'package:e_commerce_flutter/models/product_model/product_model.dart';
 import 'package:e_commerce_flutter/provider/app_provider.dart';
 import 'package:e_commerce_flutter/screens/cart_screen/cart_screen.dart';
 import 'package:e_commerce_flutter/screens/favorite_screen/favorite_screen.dart';
+import 'package:e_commerce_flutter/screens/home/check_out_screen/check_out_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -134,8 +135,13 @@ class _ProductDetailsState extends State<ProductDetails> {
                     width: 140,
                     child: ElevatedButton(
                         onPressed: () {
-                          Routes.instance
-                              .push(widget: FavoriteScreen(), context: context);
+                          ProductModel productModel =
+                              widget.singleProduct.copyWith(qty: qty);
+                          Routes.instance.push(
+                              widget: CheckOutScreen(
+                                singleProduct: productModel,
+                              ),
+                              context: context);
                         },
                         child: Text("Buy")))
               ],

@@ -72,6 +72,8 @@ class _SingleCartItemState extends State<SingleCartItem> {
                                     setState(() {
                                       qty--;
                                     });
+                                    appProvider.updatedQty(
+                                        widget.singleProduct, qty);
                                   }
                                 },
                                 padding: EdgeInsets.zero,
@@ -98,6 +100,8 @@ class _SingleCartItemState extends State<SingleCartItem> {
                                   setState(() {
                                     qty++;
                                   });
+                                  appProvider.updatedQty(
+                                      widget.singleProduct, qty);
                                   setState(() {
                                     _rippleColor = getRandomColor();
                                   });

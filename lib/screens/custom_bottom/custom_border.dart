@@ -3,6 +3,7 @@ import 'package:e_commerce_flutter/screens/cart_screen/cart_screen.dart';
 import 'package:e_commerce_flutter/screens/change_password/change_password.dart';
 import 'package:e_commerce_flutter/screens/favorite_screen/favorite_screen.dart';
 import 'package:e_commerce_flutter/screens/home/home.dart';
+import 'package:e_commerce_flutter/screens/order/order_screen.dart';
 import 'package:e_commerce_flutter/screens/welcome/welcome.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,7 @@ class _CustomBottomState extends State<CustomBottom> {
   }
 
   List<Widget> _buildScreens() =>
-      [Home(), CartScreen(), FavoriteScreen(), AccountScreen()];
+      [Home(), CartScreen(), FavoriteScreen(), AccountScreen(), OrderScreen()];
 
   List<PersistentBottomNavBarItem> _navBarsItems() => [
         PersistentBottomNavBarItem(
@@ -57,6 +58,13 @@ class _CustomBottomState extends State<CustomBottom> {
           inactiveIcon: Icon(Icons.person_outline),
           icon: const Icon(Icons.person),
           title: "Account",
+          activeColorPrimary: Colors.white,
+          inactiveColorPrimary: Colors.white,
+        ),
+        PersistentBottomNavBarItem(
+          inactiveIcon: Icon(Icons.shop_2),
+          icon: const Icon(Icons.shop_2_outlined),
+          title: "Orders",
           activeColorPrimary: Colors.white,
           inactiveColorPrimary: Colors.white,
         ),

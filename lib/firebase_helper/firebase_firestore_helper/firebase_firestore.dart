@@ -4,6 +4,7 @@ import 'package:e_commerce_flutter/models/category_model/category_model.dart';
 import 'package:e_commerce_flutter/models/product_model/product_model.dart';
 import 'package:e_commerce_flutter/models/user_model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 class FirebaseFireStoreHelper {
   static FirebaseFireStoreHelper instance = FirebaseFireStoreHelper();
@@ -69,5 +70,34 @@ class FirebaseFireStoreHelper {
     return querySnapshot.data() != null
         ? UserModel.fromJson(querySnapshot.data()!)
         : UserModel(id: '', name: '', email: '');
+  }
+
+  Future<bool> uploadOrderedProductFirebase(
+      List<ProductModel> list, BuildContext context, String payment) async {
+    try {
+      showLoaderDialog(context);
+      double totalPrice = 0.0;
+      for (var element in list) {
+        totalPrice += element.price * element.qty!;
+      }
+      DocumentReference documentReference = _firebaseFireStore
+          .collection("Users Order")
+          .doc(FirebaseAuth.instance.currentUser!.uid)
+          .collection("Orders")
+          .doc();
+
+      documentReference.set({
+        "product": list.map((e) => e.toJson()),
+        "status": "Pending",
+        "totalPrice": totalPrice,
+        "payment": payment
+      });
+      Navigator.of(context, rootNavigator: true).pop();
+      return true;
+    } catch (e) {
+      showMessage("Ordered Successfully");
+      Navigator.of(context, rootNavigator: true).pop();
+      return false;
+    }
   }
 }

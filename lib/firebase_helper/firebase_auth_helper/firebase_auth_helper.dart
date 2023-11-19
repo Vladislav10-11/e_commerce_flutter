@@ -49,12 +49,13 @@ class FirebaseAuthHelper {
   Future<bool> changePassword(String password, BuildContext context) async {
     try {
       showLoaderDialog(context);
+      _auth.currentUser!.updatePassword(password);
       // UserCredential userCredential = await _auth
       //     .createUserWithEmailAndPassword(email: email, password: password);
       // UserModel userModel = UserModel(
       //     image: null, id: userCredential.user!.uid, name: name, email: email);
       // _firestore.collection("users").doc(userModel.id).set(userModel.toJson());
-      Navigator.of(context).pop();
+      Navigator.of(context, rootNavigator: true).pop();
       showMessage("Password Change");
       Navigator.of(context).pop();
       return true;

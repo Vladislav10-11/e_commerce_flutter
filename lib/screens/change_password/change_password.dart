@@ -30,29 +30,6 @@ class _ChangePasswordState extends State<ChangePassword> {
         child:
             ListView(padding: EdgeInsets.symmetric(horizontal: 12), children: [
           TextFormField(
-            controller: confirmpassword,
-            obscureText: isShowPassword,
-            decoration: InputDecoration(
-                prefixIcon: Icon(Icons.password_sharp),
-                suffixIcon: CupertinoButton(
-                  onPressed: () {
-                    setState(() {
-                      isShowPassword = !isShowPassword;
-                      print(isShowPassword);
-                    });
-                  },
-                  padding: EdgeInsets.zero,
-                  child: Icon(
-                    Icons.visibility,
-                    color: Colors.grey,
-                  ),
-                ),
-                hintText: "Confirm Password"),
-          ),
-          SizedBox(
-            height: 24,
-          ),
-          TextFormField(
             controller: newpassword,
             obscureText: isShowPassword,
             decoration: InputDecoration(
@@ -71,6 +48,29 @@ class _ChangePasswordState extends State<ChangePassword> {
                   ),
                 ),
                 hintText: "New Password"),
+          ),
+          SizedBox(
+            height: 24,
+          ),
+          TextFormField(
+            controller: confirmpassword,
+            obscureText: isShowPassword,
+            decoration: InputDecoration(
+                prefixIcon: Icon(Icons.password_sharp),
+                suffixIcon: CupertinoButton(
+                  onPressed: () {
+                    setState(() {
+                      isShowPassword = !isShowPassword;
+                      print(isShowPassword);
+                    });
+                  },
+                  padding: EdgeInsets.zero,
+                  child: Icon(
+                    Icons.visibility,
+                    color: Colors.grey,
+                  ),
+                ),
+                hintText: "Confirm Password"),
           ),
           SizedBox(
             height: 36,

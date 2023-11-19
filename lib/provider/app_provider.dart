@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 class AppProvider with ChangeNotifier {
   /// Cart Item ///
   final List<ProductModel> _cartProductList = [];
+  final List<ProductModel> _buyProductList = [];
 
   UserModel? _userModel;
 
@@ -77,4 +79,29 @@ class AppProvider with ChangeNotifier {
       Navigator.of(context).pop();
     }
   }
+
+  //Total Price//
+
+  double totalPrice() {
+    double totalPrice = 0.0;
+    for (var element in _cartProductList) {
+      totalPrice += element.price * element.qty!;
+    }
+    return totalPrice;
+  }
+
+  void updatedQty(ProductModel productModel, int qty) {
+    int index = _cartProductList.indexOf(productModel);
+    _cartProductList[index].qty = qty;
+    notifyListeners();
+  }
+
+  // Buy Products //
+
+  void addBuyProduct(ProductModel model) {
+    _buyProductList.add(model);
+    notifyListeners();
+  }
+
+  List<ProductModel> get getBuyProductsList => _buyProductList;
 }
