@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_commerce_flutter/constants/constants.dart';
 import 'package:e_commerce_flutter/models/category_model/category_model.dart';
+import 'package:e_commerce_flutter/models/order_model/order_model.dart';
 import 'package:e_commerce_flutter/models/product_model/product_model.dart';
 import 'package:e_commerce_flutter/models/user_model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -85,6 +86,15 @@ class FirebaseFireStoreHelper {
           .doc(FirebaseAuth.instance.currentUser!.uid)
           .collection("Orders")
           .doc();
+      DocumentReference admin =
+          _firebaseFireStore.collection("Users Order").doc();
+
+      admin.set({
+        "product": list.map((e) => e.toJson()),
+        "status": "Pending",
+        "totalPrice": totalPrice,
+        "payment": payment
+      });
 
       documentReference.set({
         "product": list.map((e) => e.toJson()),
@@ -93,11 +103,33 @@ class FirebaseFireStoreHelper {
         "payment": payment
       });
       Navigator.of(context, rootNavigator: true).pop();
+      showMessage("Ordered Successfully");
       return true;
     } catch (e) {
-      showMessage("Ordered Successfully");
+      showMessage(e.toString());
       Navigator.of(context, rootNavigator: true).pop();
       return false;
+    }
+  }
+
+  // Get Order //
+
+  Future<List<OrderModel>> getUserOrder() async {
+    try {
+      QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await _firebaseFireStore
+              .collection("Users Order")
+              .doc(FirebaseAuth.instance.currentUser?.uid)
+              .collection("Orders")
+              .get();
+
+      List<OrderModel> orderList = querySnapshot.docs
+          .map((element) => OrderModel.fromJson(element.data()))
+          .toList();
+      return orderList;
+    } catch (e) {
+      showMessage(e.toString());
+      return [];
     }
   }
 }

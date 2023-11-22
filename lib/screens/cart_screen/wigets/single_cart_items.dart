@@ -68,7 +68,7 @@ class _SingleCartItemState extends State<SingleCartItem> {
                             children: [
                               CupertinoButton(
                                 onPressed: () {
-                                  if (qty >= 1) {
+                                  if (qty > 1) {
                                     setState(() {
                                       qty--;
                                     });
@@ -172,8 +172,9 @@ class _SingleCartItemState extends State<SingleCartItem> {
         ],
       ),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: Colors.red, width: 3)),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: Colors.red, width: 3),
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:e_commerce_flutter/firebase_helper/firebase_firestore_helper/fir
 import 'package:e_commerce_flutter/models/product_model/product_model.dart';
 import 'package:e_commerce_flutter/provider/app_provider.dart';
 import 'package:e_commerce_flutter/screens/custom_bottom/custom_border.dart';
+import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:e_commerce_flutter/widgets/primary_button/primary_button.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -139,7 +140,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                 if (value) {
                   Future.delayed(Duration(seconds: 2), () {
                     Routes.instance.push(
-                      widget: CustomBottom(),
+                      widget: Home(),
                       context: context,
                     );
                   });

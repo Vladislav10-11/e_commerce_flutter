@@ -45,7 +45,7 @@ class _CartScreenState extends State<CartScreen> {
                   title: "CheckOut",
                   onPressed: () {
                     // Routes.instance
-                    //     .push(widget: CheckOutScreen(), context: context);
+                    //     .push(widget: CheckOutScreen(singleProduct: produc,), context: context);
                   },
                 )
               ],

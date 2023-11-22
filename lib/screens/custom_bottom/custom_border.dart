@@ -29,8 +29,13 @@ class _CustomBottomState extends State<CustomBottom> {
     _hideNavBar = false;
   }
 
-  List<Widget> _buildScreens() =>
-      [Home(), CartScreen(), FavoriteScreen(), AccountScreen(), OrderScreen()];
+  List<Widget> _buildScreens() => [
+        Home(),
+        CartScreen(),
+        FavoriteScreen(),
+        OrderScreen(),
+        AccountScreen(),
+      ];
 
   List<PersistentBottomNavBarItem> _navBarsItems() => [
         PersistentBottomNavBarItem(
@@ -55,16 +60,16 @@ class _CustomBottomState extends State<CustomBottom> {
           inactiveColorPrimary: Colors.white,
         ),
         PersistentBottomNavBarItem(
-          inactiveIcon: Icon(Icons.person_outline),
-          icon: const Icon(Icons.person),
-          title: "Account",
+          inactiveIcon: Icon(Icons.shop_2_outlined),
+          icon: const Icon(Icons.shop_2),
+          title: "Orders",
           activeColorPrimary: Colors.white,
           inactiveColorPrimary: Colors.white,
         ),
         PersistentBottomNavBarItem(
-          inactiveIcon: Icon(Icons.shop_2),
-          icon: const Icon(Icons.shop_2_outlined),
-          title: "Orders",
+          inactiveIcon: Icon(Icons.person_outline),
+          icon: const Icon(Icons.person),
+          title: "Account",
           activeColorPrimary: Colors.white,
           inactiveColorPrimary: Colors.white,
         ),
