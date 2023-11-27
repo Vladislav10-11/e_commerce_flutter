@@ -4,7 +4,6 @@ import 'package:e_commerce_flutter/firebase_options.dart';
 import 'package:e_commerce_flutter/provider/app_provider.dart';
 import 'package:e_commerce_flutter/screens/custom_bottom/custom_border.dart';
 
-import 'package:e_commerce_flutter/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/welcome/welcome.dart';

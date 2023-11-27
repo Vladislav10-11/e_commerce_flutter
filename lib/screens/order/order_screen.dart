@@ -54,8 +54,8 @@ class _OrderScreenState extends State<OrderScreen> {
                         textBaseline: TextBaseline.alphabetic,
                         children: [
                           Container(
-                            width: 150,
-                            height: 150,
+                            width: 120,
+                            height: 120,
                             color: Colors.red.withOpacity(0.5),
                             child: Image.network(
                               orderModel.product[0].image,
@@ -71,26 +71,26 @@ class _OrderScreenState extends State<OrderScreen> {
                                   Text(
                                     orderModel.product[0].name,
                                     style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 15,
+                                    ),
                                   ),
                                   SizedBox(
-                                    width: 20.0,
+                                    height: 12.0,
                                   ),
                                   Text(
                                     "Total Price:\$${orderModel.totalPrice.toString()}",
                                     style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 15,
+                                    ),
                                   ),
                                   SizedBox(
-                                    width: 20.0,
+                                    height: 12.0,
                                   ),
                                   Text(
                                     "Order Status:${orderModel.status}",
                                     style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 15,
+                                    ),
                                   )
                                 ]),
                               ),
@@ -102,7 +102,7 @@ class _OrderScreenState extends State<OrderScreen> {
                         ListTile(
                           title: Text(
                             orderModel.status,
-                            style: TextStyle(fontWeight: FontWeight.w700),
+                            style: TextStyle(),
                           ),
                         )
                       ],
